@@ -60,7 +60,7 @@ function AddBlog() {
           <textarea
             name="content"
             className="form-control"
-            rows="4"
+            rows="7"
             value={blog.content}
              onChange={handleChange}
             required

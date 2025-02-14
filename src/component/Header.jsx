@@ -13,7 +13,7 @@ function Header() {
 
                 {/* Add Blog Button */}
                 <NavLink to="/" className="btn  my-3 ">Home</NavLink>
-                <NavLink to="/ad-blog" className="btn  my-3">Add Blog</NavLink>
+                <NavLink to="/ad-blog" className="btn btn-secondary my-3" style={{    "margin-left": "20px"}}>Add Blog</NavLink>
             </div>
         </nav>
   

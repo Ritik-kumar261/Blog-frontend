@@ -44,7 +44,7 @@ function Home() {
                         <strong>Author:</strong> {Blog.author} <br />
                         <strong>Date:</strong> {Blog.publication_date}
                       </p>
-                      <NavLink to={`/blog/${Blog.id}`} className="btn btn-primary " style={{alignSelf: "flex-start"}}>
+                      <NavLink to={`/blog/${Blog.id}`} className="btn btn-secondary " style={{alignSelf: "flex-start"}}>
                         Read More
                       </NavLink>
                     </div>
