@@ -12,6 +12,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/ad-blog" element={<AddBlog />} />
+      <Route path="/blogs/{id}" element={<AddBlog />} />
+
     </Routes>
   </Router>
   );
