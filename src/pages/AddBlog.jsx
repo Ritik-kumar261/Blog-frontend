@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../component/Header'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function AddBlog() {
 
@@ -10,6 +11,8 @@ function AddBlog() {
         author:"",
         publication_date:""
     });
+    const [loading, setloading] = useState(false)
+    const navigate = useNavigate();
     const handleChange = (e) => {
         setBlog({ ...blog, [e.target.name]: e.target.value });
       };
@@ -17,6 +20,7 @@ function AddBlog() {
     
       const formSubmit= async (e)=>{
         e.preventDefault();
+        setloading(true);
         try {
             const response =await axios.post('http://localhost:8000/api/blogs',blog, {
             headers:{
@@ -27,12 +31,15 @@ function AddBlog() {
             if(response.status==200 || response.status==201){
                 alert(response.data.message);
                 setBlog({title:"",content:"",author:"",publication_date:""});
+                navigate("/");
 
             }else{
                 alert("There is an error to add the Post");
             }
         } catch (error) {
             console.log(error);
+        }finally{
+          setloading(false);
         }
       }
   return (
@@ -40,6 +47,14 @@ function AddBlog() {
     <Header/>
         <div className=" shadow container mt-4">
       <h2 className='mt-3'>Add New Blog</h2>
+      {loading && (
+        <div className="text-center my-3">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Updating...</span>
+          </div>
+          <p className="mt-2"> Please Wait...</p>
+        </div>
+        )}
       <form onSubmit={formSubmit} >
         {/* Title Input */}
         <div className="mb-3">

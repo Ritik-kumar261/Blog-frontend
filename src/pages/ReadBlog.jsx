@@ -68,7 +68,7 @@ function ReadBlog() {
                         <div className="card-footer">
                         <div className="row">
                                 <div className="col-md-2 my-2">
-                                    <NavLink to={`/update/${id}`} className="btn btn-secondary" >update</NavLink>
+                                    <NavLink to={`/update/${id}`} state={{blog}} className="btn btn-secondary" >update</NavLink>
                                 </div>
                                 <div className="col-md-2 my-2">
                                     <button onClick={deleatBlog} className="btn btn-secondary" >delete</button>
