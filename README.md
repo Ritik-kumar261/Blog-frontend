@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+🖥️ Blog Application (Frontend) - React.js
+This is the frontend of the blog application built using React.js. It interacts with the Laravel backend via REST API and provides a responsive UI for managing blog posts.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🚀 Features
+✅ Display blog posts with pagination
+✅ Create, update, and delete blogs
+✅ Responsive UI with React & Bootstrap
+✅ API integration using Axios
+✅ Loader on form submission
 
-## Available Scripts
+📂 Folder Structure
+bash
+Copy
+Edit
+blog_project/
+│── frontend/              # React App (Frontend)
+│   ├── src/               # React components & pages
+│   ├── public/            # Public assets (index.html, favicon, etc.)
+│   ├── .env               # API URL configuration
+│   ├── package.json       # Dependencies & scripts
+│   ├── README.md          # Documentation
+🚀 Frontend Setup
+1️⃣ Clone the Repository
+bash
+Copy
+Edit
+git clone https://github.com/Ritik-kumar261/blog_frontend.git
+cd blog_frontend
+2️⃣ Install Dependencies
+bash
+Copy
+Edit
+npm install
+3️⃣ Configure Environment
+Create a .env file in the root directory and set your backend API URL:
 
-In the project directory, you can run:
+bash
+Copy
+Edit
+REACT_APP_API_URL=http://localhost:8000/api
+4️⃣ Start the Development Server
+bash
+Copy
+Edit
+npm start
+📡 API Integration (Axios)
+The frontend uses Axios to interact with the backend API. Example usage:
 
-### `npm start`
+javascript
+Copy
+Edit
+import axios from 'axios';
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+const API_URL = process.env.REACT_APP_API_URL;
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+export const fetchBlogs = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/blogs`);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching blogs", error);
+        return [];
+    }
+};
+📜 Available Scripts
+Command	Description
+npm start	Run the development server
+npm build	Build the project for production
+npm test	Run unit tests
+📜 Technologies Used
+✅ React.js - Component-based UI
+✅ React Router - Page navigation
+✅ Axios - API calls
+✅ Bootstrap - Responsive design
+✅ React Hooks - State management
 
-### `npm test`
+🎯 Contributing
+Contributions are welcome! Feel free to submit a pull request.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+📜 License
+This project is open-source under the MIT License.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
