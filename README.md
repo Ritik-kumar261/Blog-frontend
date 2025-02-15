@@ -24,7 +24,7 @@ blog_project/
 bash
 Copy
 Edit
-git clone https://github.com/Ritik-kumar261/blog_frontend.git
+git clone https://github.com/Ritik-kumar261/Blog-frontend.git
 cd blog_frontend
 2️⃣ Install Dependencies
 bash
