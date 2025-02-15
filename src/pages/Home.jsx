@@ -4,18 +4,26 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 function Home() {
     const [Blog, setBlog] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     useEffect( ()=>{
-      const  fetchBlog= async ()=>{
-        try {
-            const response= await axios.get('http://localhost:8000/api/blogs');
-            setBlog(response.data);
-        } catch (error) {
-            console.log("Error:", error);
-        };
+      fetchBlog(currentPage);
+    },[currentPage]);
+    const  fetchBlog= async (page)=>{
+      try {
+          const response= await axios.get(`http://localhost:8000/api/blogs?page=${page}`);
+          setBlog(response.data.data);
+          setTotalPages(response.data.last_page)
+      } catch (error) {
+          console.log("Error:", error);
       };
-      fetchBlog();
-    },[]);
+    };
     console.log(Blog);
+    const handlePageChange = (newPage) => {
+      if (newPage > 0 && newPage <= totalPages) {
+          setCurrentPage(newPage);
+      }
+  };
     return (
         <>
         <Header/>
@@ -53,6 +61,17 @@ function Home() {
               ))}
             </div>
           )}
+           <div className="pagination my-3">
+                    <button className='btn btn-secondary mx-3' onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                        Previous
+                    </button>
+                    <span>
+                        Page {currentPage} of {totalPages}
+                    </span>
+                    <button className='btn btn-secondary mx-3' onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                        Next
+                    </button>
+                </div>
         </div>
         </>
       );
