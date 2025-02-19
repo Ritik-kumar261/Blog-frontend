@@ -31,7 +31,9 @@ function Home() {
           <h2 className="mb-4 text-center">All Blogs</h2>
           
           {Blog.length === 0 ? (
-            <p>No blogs available</p>
+            <div className="row">
+              <h1 className='text-muted mt-4 '>No blogs available</h1>
+            </div>
           ) : (
             <div className="row">
               {Blog.map((Blog) => (
@@ -61,17 +63,19 @@ function Home() {
               ))}
             </div>
           )}
-           <div className="pagination my-3">
-                    <button className='btn btn-secondary mx-3' onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-                        Previous
-                    </button>
-                    <span>
-                        Page {currentPage} of {totalPages}
-                    </span>
-                    <button className='btn btn-secondary mx-3' onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-                        Next
-                    </button>
-                </div>
+           {Blog.length ===0?"":(
+            <div className="pagination my-3">
+            <button className='btn btn-secondary mx-3' onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                Previous
+            </button>
+            <span>
+                Page {currentPage} of {totalPages}
+            </span>
+            <button className='btn btn-secondary mx-3' onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                Next
+            </button>
+        </div>
+           )}
         </div>
         </>
       );
